@@ -11,7 +11,7 @@
 const std::string CLIENT_NAME("MagicMoney");
 
 // Client version number
-#define CLIENT_VERSION_SUFFIX   "-0.9.8"
+#define CLIENT_VERSION_SUFFIX   "beta" //-0.9.8"
 
 
 // The following part of the code determines the CLIENT_BUILD variable.
@@ -45,7 +45,7 @@ const std::string CLIENT_NAME("MagicMoney");
     "v" STRINGIFY(maj) "." STRINGIFY(min) "." STRINGIFY(rev) "." STRINGIFY(build) "-g" commit
 
 #define BUILD_DESC_FROM_UNKNOWN(maj,min,rev,build) \
-    "v" STRINGIFY(maj) "." STRINGIFY(min) "." STRINGIFY(rev) "." STRINGIFY(build) "-unk"
+    "v" STRINGIFY(maj) "." STRINGIFY(min) "." STRINGIFY(rev) "." STRINGIFY(build) //"-unk"
 
 #ifndef BUILD_DESC
 #    ifdef GIT_COMMIT_ID

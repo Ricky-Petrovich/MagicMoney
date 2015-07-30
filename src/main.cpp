@@ -32,7 +32,7 @@ unsigned int nTransactionsUpdated = 0;
 map<uint256, CBlockIndex*> mapBlockIndex;
 set<pair<COutPoint, unsigned int> > setStakeSeen;
 uint256 hashGenesisBlock = hashGenesisBlockOfficial;
-static CBigNum bnProofOfWorkLimit(~uint256(0) >> 32);
+static CBigNum bnProofOfWorkLimit(~uint256(0) >> 8);
 static CBigNum bnInitialHashTarget(~uint256(0) >> 40);
 static CBigNum bnProofOfStakeLimit(~uint256(0) >> 16);
 unsigned int nStakeMinAge = STAKE_MIN_AGE;
@@ -716,7 +716,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!(IsCoinBase() || IsCoinStake()))
         return 0;
-    return max(0, (nCoinbaseMaturity+20) - GetDepthInMainChain());
+    return max(0, (nCoinbaseMaturity) - GetDepthInMainChain());
 }
 
 
@@ -2655,9 +2655,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
         
         bool badVersion = false;
-        if (pfrom->nVersion < 60007)
-        	badVersion = true;
-        if (nBestHeight > 80000 && pfrom->nVersion < 60008)
+        if (pfrom->nVersion < PROTOCOL_START)
         	badVersion = true;
         	
         if (badVersion)

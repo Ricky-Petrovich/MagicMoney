@@ -997,7 +997,7 @@ void MapPort(bool /* unused fMapPort */)
 // The second name should resolve to a list of seed addresses.
 // testnet dns seed begins with 't', all else are MagicMoney dns seeds.
 static const char *strDNSSeed[][2] = {
-    //{"seed", "dnsseed.gorillastake.com"},
+    {"seed", "52.24.62.233"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
